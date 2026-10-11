@@ -7,11 +7,11 @@ import br.edu.ifsc.saber_gaspar.repository.EventoRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MapperEvento {
+public class EventoMapper {
 
     private final EventoRepository eventoRepository;
 
-    public MapperEvento(EventoRepository eventoRepository) {
+    public EventoMapper(EventoRepository eventoRepository) {
         this.eventoRepository = eventoRepository;
     }
 
@@ -21,7 +21,7 @@ public class MapperEvento {
                 eventoRequest.dataHoraEvento(),
                 eventoRequest.descricao()
         );
-        return eventoRepository.save(evento);
+        return evento;
     }
 
     public EventoResposta transformarEmResposta(Evento evento) {

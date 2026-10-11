@@ -1,6 +1,6 @@
 package br.edu.ifsc.saber_gaspar.service;
 
-import br.edu.ifsc.saber_gaspar.mapper.MapperEvento;
+import br.edu.ifsc.saber_gaspar.mapper.EventoMapper;
 import br.edu.ifsc.saber_gaspar.mapper.dto.EventoRequest;
 import br.edu.ifsc.saber_gaspar.mapper.dto.EventoResposta;
 import br.edu.ifsc.saber_gaspar.model.Evento;
@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class EventoService {
 
-    MapperEvento mapperEvento;
+    EventoMapper mapperEvento;
     EventoRepository eventoRepository;
 
     public EventoResposta salvarEvento(EventoRequest eventoRequest){
@@ -34,9 +34,7 @@ public class EventoService {
 
     public void deletarEvento(Long idEvento){
         Evento deletarEvento = eventoRepository.findById(idEvento)
-                .orElseThrow(() -> new RuntimeException(
-                        "Evento não encontrado com id: " + idEvento
-                ));
+                .orElseThrow(() -> new RuntimeException("Evento não encontrado com id: " + idEvento));
         eventoRepository.delete(deletarEvento);
     }
 
@@ -48,6 +46,12 @@ public class EventoService {
             eventoRespostas.add(listar);
         }
         return eventoRespostas;
+    }
+
+    public EventoResposta encontrarEventoId(Long idEvento){
+        Evento evento = eventoRepository.findById(idEvento)
+                .orElseThrow(() -> new RuntimeException("Evento não encontrado com id: " + idEvento));
+        return mapperEvento.transformarEmResposta(evento);
     }
 
 }

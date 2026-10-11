@@ -1,8 +1,10 @@
 package br.edu.ifsc.saber_gaspar.controller;
 
+import br.edu.ifsc.saber_gaspar.mapper.EventoMapper;
 import br.edu.ifsc.saber_gaspar.mapper.dto.EventoRequest;
 import br.edu.ifsc.saber_gaspar.mapper.dto.EventoResposta;
 import br.edu.ifsc.saber_gaspar.service.EventoService;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,4 +41,8 @@ public class EventoController {
         eventoService.deletarEvento(idEvento);
     }
 
+    @GetMapping("/{idEvento}")
+    public ResponseEntity<EventoResposta> encontrarEventoId(Long idEvento){
+        return ResponseEntity.ok().body(eventoService.encontrarEventoId(idEvento));
+    }
 }
