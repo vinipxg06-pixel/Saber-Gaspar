@@ -21,12 +21,12 @@ public class EventoController {
     }
 
     @PostMapping
-    public ResponseEntity<EventoResposta> salvarEvento(EventoRequest eventoRequest){
+    public ResponseEntity<EventoResposta> salvarEvento(@RequestBody EventoRequest eventoRequest){
         return ResponseEntity.ok().body(eventoService.salvarEvento(eventoRequest));
     }
 
     @PutMapping("/{idEvento}")
-    public ResponseEntity<EventoResposta> atualizarEvento(EventoRequest eventoRequest, Long idEvento){
+    public ResponseEntity<EventoResposta> atualizarEvento(@RequestBody EventoRequest eventoRequest,@PathVariable Long idEvento){
         return ResponseEntity.ok().body(eventoService.atualizarEvento(eventoRequest, idEvento));
     }
 
@@ -37,12 +37,12 @@ public class EventoController {
     }
 
     @DeleteMapping("/{idEvento}")
-    public void deletarEvento(Long idEvento){
+    public void deletarEvento(@PathVariable Long idEvento){
         eventoService.deletarEvento(idEvento);
     }
 
     @GetMapping("/{idEvento}")
-    public ResponseEntity<EventoResposta> encontrarEventoId(Long idEvento){
+    public ResponseEntity<EventoResposta> encontrarEventoId(@PathVariable Long idEvento){
         return ResponseEntity.ok().body(eventoService.encontrarEventoId(idEvento));
     }
 }

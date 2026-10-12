@@ -18,6 +18,7 @@ public class EventoMapper {
     public Evento transformarEmEntidade(EventoRequest eventoRequest) {
         Evento evento = new Evento(
                 eventoRequest.local(),
+                eventoRequest.titulo(),
                 eventoRequest.dataHoraEvento(),
                 eventoRequest.descricao()
         );
@@ -27,6 +28,7 @@ public class EventoMapper {
     public EventoResposta transformarEmResposta(Evento evento) {
         return new EventoResposta(
                 evento.getIdEvento(),
+                evento.getTitulo(),
                 evento.getLocal(),
                 evento.getDataHoraEvento(),
                 evento.getDescricao()

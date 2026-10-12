@@ -16,6 +16,11 @@ public class EventoService {
     EventoMapper mapperEvento;
     EventoRepository eventoRepository;
 
+    public EventoService(EventoMapper mapperEvento, EventoRepository eventoRepository) {
+        this.mapperEvento = mapperEvento;
+        this.eventoRepository = eventoRepository;
+    }
+
     public EventoResposta salvarEvento(EventoRequest eventoRequest){
         Evento salvar = mapperEvento.transformarEmEntidade(eventoRequest);
         eventoRepository.save(salvar);
@@ -28,6 +33,7 @@ public class EventoService {
         atualizar.setDataHoraEvento(eventoRequest.dataHoraEvento());
         atualizar.setDescricao(eventoRequest.descricao());
         atualizar.setLocal(eventoRequest.local());
+        atualizar.setTitulo(eventoRequest.titulo());
         Evento eventoAtualizado = eventoRepository.save(atualizar);
         return mapperEvento.transformarEmResposta(eventoAtualizado);
     }

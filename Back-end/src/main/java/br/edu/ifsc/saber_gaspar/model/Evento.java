@@ -13,8 +13,9 @@ import java.time.LocalDateTime;
 @Data
 public class Evento {
 
-    public Evento(String local, LocalDateTime dataHoraEvento, String descricao) {
+    public Evento(String local, String titulo, LocalDateTime dataHoraEvento, String descricao) {
         this.local = local;
+        this.titulo = titulo;
         this.dataHoraEvento = dataHoraEvento;
         this.descricao = descricao;
     }
@@ -23,6 +24,9 @@ public class Evento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ideventos")
     private Long idEvento;
+
+    @Column(name = "titulo")
+    private String titulo;
 
     @Column(name = "local", nullable = false)
     private String local;

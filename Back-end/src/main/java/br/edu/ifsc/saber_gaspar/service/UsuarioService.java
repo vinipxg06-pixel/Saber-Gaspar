@@ -16,6 +16,11 @@ public class UsuarioService {
     UsuarioMapper usuarioMapper;
     UsuarioRepository usuarioRepository;
 
+    public UsuarioService(UsuarioMapper usuarioMapper, UsuarioRepository usuarioRepository) {
+        this.usuarioMapper = usuarioMapper;
+        this.usuarioRepository = usuarioRepository;
+    }
+
     public UsuarioResposta salvarUsuario(UsuarioRequest usuarioRequest){
         Usuario criar = new Usuario();
         criar.setSenhaUsuario(usuarioRequest.senha());
