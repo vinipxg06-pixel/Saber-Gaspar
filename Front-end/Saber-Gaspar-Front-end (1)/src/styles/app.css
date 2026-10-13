@@ -1,0 +1,33 @@
+/* Moldura de celular no desktop; tela cheia no celular */
+.app-stage {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a2e14 0%, #1B6B3A 100%);
+}
+.app-phone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 390px;
+  height: min(844px, 100dvh - 24px);
+  border-radius: 44px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55), 0 0 0 2px rgba(255, 255, 255, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+.app-statusbar { display: flex; }
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@media (max-width: 500px) {
+  .app-stage { display: block; background: #F2F7F4; }
+  .app-phone { width: 100%; height: 100dvh; border-radius: 0; box-shadow: none; }
+  .app-statusbar { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #1B6B3A; outline-offset: 2px;
+}
