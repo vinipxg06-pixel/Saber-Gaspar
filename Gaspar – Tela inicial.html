@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gaspar – Início</title>
+<style>
+:root{--bg:#eef5ef;--card:#fff;--text:#16241b;--muted:#5d6f63;--green:#1b6b3a;--gold:#d4a017;--blue:#1a5fa8;--purple:#6b4bb8;--line:#dbe6dd;color-scheme:light dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a13;--card:#18271d;--text:#e8f2ea;--muted:#9bb0a1;--line:#27382d}}
+:root[data-theme="dark"]{--bg:#0f1a13;--card:#18271d;--text:#e8f2ea;--muted:#9bb0a1;--line:#27382d}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif}
+.app{max-width:430px;margin:0 auto;min-height:100vh;position:relative;padding-bottom:96px}
+header{background:linear-gradient(160deg,#1b6b3a,#145229);color:#fff;padding:22px 20px 26px;border-radius:0 0 26px 26px;position:relative}
+header:after{content:"";position:absolute;left:20px;right:20px;bottom:0;height:5px;background:linear-gradient(90deg,var(--gold) 33%,#fff 33% 66%,var(--gold) 66%);border-radius:5px 5px 0 0}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.hi{font-size:13px;opacity:.85}
+h1{margin:2px 0 4px;font-size:25px}
+.loc{font-size:13px;opacity:.9}
+.search{margin-top:16px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:14px;padding:12px 14px;display:flex;gap:8px}
+.search input{flex:1;background:none;border:0;outline:0;color:#fff;font:inherit;font-size:14px}
+.search input::placeholder{color:rgba(255,255,255,.75)}
+.search:focus-within{background:rgba(255,255,255,.25)}
+/* login */
+.gbtn{display:flex;align-items:center;gap:8px;background:#fff;color:#3c4043;border:1px solid #dadce0;border-radius:22px;padding:7px 12px 7px 9px;font:600 13px system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.gbtn:hover{background:#f6f8fb}
+.gbtn svg{width:18px;height:18px}
+.user{display:flex;align-items:center;gap:8px;cursor:pointer;background:rgba(255,255,255,.15);border-radius:22px;padding:4px 12px 4px 4px;font-size:13px;font-weight:700;border:0;color:#fff;font-family:inherit}
+.avatar{width:30px;height:30px;border-radius:50%;background:var(--gold);color:#3a2a00;display:grid;place-items:center;font-weight:800}
+main{padding:0 18px}
+h2{font-size:17px;margin:24px 0 12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 14px;text-align:left;font:inherit;color:var(--text);cursor:pointer;display:flex;flex-direction:column;gap:10px;transition:.15s}
+.qa:active,.qa.on{transform:scale(.97);border-color:var(--c)}
+.ic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;font-size:22px;background:color-mix(in srgb,var(--c) 15%,transparent)}
+.qa b{font-size:14px}.qa small{color:var(--muted);font-size:12px}
+.alert{margin-top:14px;background:color-mix(in srgb,var(--gold) 16%,var(--card));border:1px solid var(--gold);border-radius:16px;padding:14px;display:flex;gap:10px;align-items:flex-start;font-size:13px}
+.alert a{color:var(--green);font-weight:800;cursor:pointer;display:inline-block;margin-top:4px}
+@media (prefers-color-scheme:dark){.alert a{color:var(--gold)}}
+.ev{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:12px;border-left:5px solid var(--green)}
+.tag{font-size:11px;font-weight:800;color:var(--green);text-transform:uppercase}
+@media (prefers-color-scheme:dark){.tag{color:#6fd493}}
+.ev h3{margin:4px 0 6px;font-size:15px}.ev p{margin:0;font-size:12.5px;color:var(--muted)}
+/* fale conosco */
+.fab{position:fixed;right:max(16px,calc(50% - 215px + 16px));bottom:calc(18px + env(safe-area-inset-bottom,0px));background:#25d366;color:#06310f;font:800 14px inherit;font-family:inherit;border:0;border-radius:30px;padding:13px 18px;display:flex;gap:8px;align-items:center;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.fab svg{width:22px;height:22px}
+.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);background:#16241b;color:#fff;padding:10px 16px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:5;max-width:90%}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="top">
+      <div>
+        <div class="hi" id="date"></div>
+        <h1 id="greet">Olá, Gaspar</h1>
+        <div class="loc">📍 Gaspar – SC</div>
+      </div>
+      <div id="auth"></div>
+    </div>
+    <label class="search">🔍<input placeholder="Buscar serviços, locais, eventos…"></label>
+  </header>
+
+  <main>
+    <h2>Acesso rápido</h2>
+    <div class="grid">
+      <button class="qa" style="--c:#1b6b3a"><span class="ic">🏛️</span><b>Serviços Públicos</b><small>Prefeitura e órgãos</small></button>
+      <button class="qa" style="--c:#2e8b57"><span class="ic">🗑️</span><b>Coleta de Lixo</b><small>Horários por bairro</small></button>
+      <button class="qa" style="--c:#6b4bb8"><span class="ic">🚌</span><b>Pontos de Ônibus</b><small>Linhas e horários</small></button>
+      <button class="qa" style="--c:#1a5fa8"><span class="ic">🌊</span><b>Cotas de Alagamento</b><small>Rio Itajaí-Açu</small></button>
+    </div>
+
+    <div class="alert"><span>⚠️</span><div><b>Aviso oficial da Prefeitura</b><br>Acompanhe os comunicados da Defesa Civil sobre o nível do rio.<br><a>Ver mais →</a></div></div>
+
+    <h2>Últimos eventos</h2>
+    <div class="ev"><span class="tag">Cultura</span><h3>Feira Cultural no Centro</h3><p>📅 Sáb, 10h · 📍 Praça Central · 👥 120 confirmados</p></div>
+    <div class="ev"><span class="tag">Comunidade</span><h3>Mutirão de Limpeza do Rio</h3><p>📅 Dom, 8h · 📍 Margem do Itajaí-Açu · 👥 64 confirmados</p></div>
+  </main>
+
+  <a class="fab" id="wa" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.8L0 24l6.4-1.7A11.8 11.8 0 1 0 20.5 3.5zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.800 1 1-3.700-.2-.4a9.800 9.800 0 1 1 8.400 4.700zm5.400-7.300c-.3-.1-1.800-.9-2-1s-.5-.1-.7.100-.8 1-1 1.200-.4.200-.7.100a8 8 0 0 1-4-3.500c-.3-.5.300-.5.900-1.600.1-.2 0-.4 0-.5l-.9-2.200c-.2-.6-.5-.5-.7-.5h-.6a1.200 1.200 0 0 0-.9.400 3.700 3.700 0 0 0-1.100 2.700 6.400 6.400 0 0 0 1.400 3.400 14.600 14.600 0 0 0 5.600 4.900c2.100.9 2.900.9 3.400.8a2.900 2.900 0 0 0 1.900-1.300 2.400 2.400 0 0 0 .2-1.300c-.1-.1-.3-.2-.6-.3z"/></svg>
+    Fale conosco
+  </a>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== CONFIGURAÇÃO =====
+var WHATSAPP_NUMERO = "5547999999999"; // ← troque: 55 + DDD + número, só dígitos
+var WHATSAPP_MSG = "Olá! Preciso de ajuda com o app de Gaspar.";
+
+var G='<svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.500c3.500 0 6.600 1.200 9.100 3.600l6.800-6.800C35.800 2.400 30.300 0 24 0 14.600 0 6.500 5.400 2.600 13.200l7.900 6.100C12.400 13.600 17.700 9.500 24 9.500z"/><path fill="#4285F4" d="M46.500 24.500c0-1.600-.1-3.100-.4-4.500H24v9h12.700c-.6 3-2.300 5.500-4.800 7.200l7.500 5.800c4.400-4.100 7.100-10.100 7.100-17.500z"/><path fill="#FBBC05" d="M10.500 28.700A14.500 14.500 0 0 1 9.500 24c0-1.600.3-3.200.8-4.700l-7.900-6.100A24 24 0 0 0 0 24c0 3.900.9 7.500 2.600 10.800l7.900-6.100z"/><path fill="#34A853" d="M24 48c6.500 0 11.900-2.100 15.900-5.800l-7.500-5.800c-2.100 1.400-4.800 2.300-8.400 2.300-6.300 0-11.600-4.100-13.500-9.800l-7.900 6.100C6.500 42.600 14.600 48 24 48z"/></svg>';
+
+function toast(t){var e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(function(){e.classList.remove('show')},3200)}
+
+// Saudação por horário
+(function(){
+  var d=new Date(),h=d.getHours();
+  var s=h>=5&&h<12?'Bom dia':h>=12&&h<18?'Boa tarde':'Boa noite';
+  window.__s=s;
+  document.getElementById('date').textContent=d.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'});
+})();
+
+// Estado de login (simulado nesta prévia)
+var user=null;
+function render(){
+  var a=document.getElementById('auth');
+  document.getElementById('greet').textContent=window.__s+', '+(user?user.nome:'Gaspar');
+  if(user){
+    a.innerHTML='<button class="user" id="out" title="Sair"><span class="avatar">'+user.nome[0]+'</span>'+user.nome+'</button>';
+    document.getElementById('out').onclick=function(){user=null;render();toast('Você saiu da conta.')};
+  }else{
+    a.innerHTML='<button class="gbtn" id="in">'+G+'Entrar com Google</button>';
+    document.getElementById('in').onclick=loginGoogle;
+  }
+}
+function loginGoogle(){
+  // Prévia: simula o retorno do Google. No app real use google_sign_in (veja abaixo).
+  user={nome:'Maria',email:'maria@gmail.com'};
+  render();toast('Login simulado com Google. No app Flutter será a conta real.');
+}
+render();
+
+// Fale conosco → WhatsApp
+document.getElementById('wa').href='https://wa.me/'+WHATSAPP_NUMERO+'?text='+encodeURIComponent(WHATSAPP_MSG);
+
+document.querySelectorAll('.qa').forEach(function(b){b.onclick=function(){
+  document.querySelectorAll('.qa').forEach(function(x){x.classList.remove('on')});b.classList.add('on')}});
+</script>
+</body>
+</html>
